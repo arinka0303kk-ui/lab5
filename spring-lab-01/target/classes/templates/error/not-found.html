@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${#locale.language}">
+<head><meta charset="UTF-8"><title th:text="#{book.notfound.title}"></title>
+<link rel="stylesheet" th:href="@{/css/app.css}"></head>
+<body>
+<nav><a href="?lang=en">EN</a> | <a href="?lang=ru">RU</a> | <a href="?lang=kk">KK</a></nav>
+<h1 th:text="#{book.notfound.title}"></h1>
+<p th:text="#{book.notfound(${bookId})}"></p>
+<a th:href="@{/books}" th:text="#{book.catalogue}"></a>
+</body></html>

@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    padding: 40px;
+    color: #333;
+}
+
+h1 {
+    color: #2c3e50;
+}
+
+table {
+    width: 100%;
+    max-width: 800px;
+    border-collapse: collapse;
+    background: white;
+}
+
+th,
+td {
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+th {
+    background: #2c3e50;
+    color: white;
+}
+
+.flash {
+    padding: 10px;
+    background: #d4edda;
+    border: 1px solid #a3d9a5;
+    color: #155724;
+    max-width: 760px;
+}
+
+.is-invalid { border: 1px solid red; }
+.error, .alert { color: #b00020; }

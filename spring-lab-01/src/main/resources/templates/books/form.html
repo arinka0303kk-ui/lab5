@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${#locale.language}">
+<head><meta charset="UTF-8"><title th:text="#{book.new}"></title>
+<link rel="stylesheet" th:href="@{/css/app.css}"></head>
+<body>
+<nav><a href="?lang=en">EN</a> | <a href="?lang=ru">RU</a> | <a href="?lang=kk">KK</a></nav>
+<h1 th:text="#{book.new}"></h1>
+<form th:action="@{/books}" th:object="${form}" method="post">
+<div class="alert" th:if="${#fields.hasAnyErrors()}">
+<ul><li th:each="e : ${#fields.allErrors()}" th:text="${e}"></li></ul>
+</div>
+<p><label for="title" th:text="#{book.title}"></label>
+<input type="text" th:field="*{title}" th:errorclass="is-invalid">
+<span class="error" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span></p>
+<p><label for="author" th:text="#{book.author}"></label>
+<input type="text" th:field="*{author}" th:errorclass="is-invalid">
+<span class="error" th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></span></p>
+<p><label for="year" th:text="#{book.year}"></label>
+<input type="number" th:field="*{year}" th:errorclass="is-invalid">
+<span class="error" th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></span></p>
+
+<p><label for="genre" th:text="#{book.genre}"></label>
+<select th:field="*{genre}" th:errorclass="is-invalid">
+<option value="" th:text="#{genre.choose}"></option>
+<option th:each="g : ${genres}" th:value="${g}" th:text="#{${'genre.' + g}}"></option>
+</select>
+<span class="error" th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></span></p>
+<p><label><input type="checkbox" th:field="*{available}"><span th:text="#{book.available}"></span></label></p>
+<button type="submit" th:text="#{form.submit}"></button>
+</form>
+<p><a th:href="@{/books}" th:text="#{book.catalogue}"></a></p>
+</body></html>
