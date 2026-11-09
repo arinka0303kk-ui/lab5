@@ -1,0 +1,5 @@
+<!doctype html><html xmlns:th="http://www.thymeleaf.org"><head><meta charset="UTF-8"><title>Administration</title><link rel="stylesheet" href="/css/app.css"></head>
+<body><h1>Administration</h1><p>Users loaded from PostgreSQL</p>
+<table><tr><th>Username</th><th>Enabled</th><th>Roles</th></tr>
+<tr th:each="u : ${users}"><td th:text="${u.username}"></td><td th:text="${u.enabled}"></td><td th:text="${u.roles}"></td></tr></table>
+<a href="/books">Catalogue</a><form th:action="@{/logout}" method="post"><button>Log out</button></form></body></html>

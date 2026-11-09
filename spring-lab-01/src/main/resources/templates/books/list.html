@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:lang="${#locale.language}">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" th:lang="${#locale.language}">
 <head><meta charset="UTF-8"><title th:text="#{book.catalogue}"></title>
 <link rel="stylesheet" th:href="@{/css/app.css}"></head>
 <body>
+<p>Signed in: <strong sec:authentication="name"></strong>
+<span sec:authentication="principal.authorities"></span></p>
+<a sec:authorize="hasRole('ADMIN')" th:href="@{/admin}">Administration</a>
+<form th:action="@{/logout}" method="post"><button type="submit">Log out</button></form>
 <nav><a href="?lang=en">EN</a> | <a href="?lang=ru">RU</a> | <a href="?lang=kk">KK</a></nav>
 <h1 th:text="#{book.catalogue}"></h1>
 <p th:if="${message}" class="flash" th:text="${message}"></p>
-<p><a th:href="@{/books/new}" th:text="#{book.new}"></a></p>
+<p sec:authorize="hasRole('ADMIN')"><a th:href="@{/books/new}" th:text="#{book.new}"></a></p>
 <table><tr><th>#</th><th th:text="#{book.title}"></th><th th:text="#{book.author}"></th><th th:text="#{book.year}"></th></tr>
 <tr th:each="book : ${books}"><td th:text="${book.id}"></td><td th:text="${book.title}"></td><td th:text="${book.author}"></td><td th:text="${book.year}"></td></tr>
 </table></body></html>
