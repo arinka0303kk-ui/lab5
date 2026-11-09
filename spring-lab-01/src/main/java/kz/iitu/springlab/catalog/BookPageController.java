@@ -44,8 +44,8 @@ public class BookPageController {
             model.addAttribute("genres", Genre.values());
             return "books/form";
         }
-        Book saved = service.create(new Book(null, form.getTitle(),
-                form.getAuthor(), form.getYear()));
+        BookResponse saved = service.create(form.getTitle(),
+                form.getAuthor(), form.getYear(), form.getGenre());
         redirect.addFlashAttribute("message", messages.getMessage(
                 "book.added", new Object[]{saved.title()}, locale));
         return "redirect:/books";

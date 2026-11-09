@@ -39,3 +39,15 @@ GET http://localhost:8080/books/999
 ### Lab 6: API exception handler
 GET http://localhost:8080/api/books/999
 Accept: application/problem+json
+
+### Lab 8: first page (totalElements = 8 after a clean development start)
+GET http://localhost:8080/api/books?page=0&size=3
+
+### Lab 8: second page, descending year
+GET http://localhost:8080/api/books?page=1&size=3&sort=year,desc
+
+### Lab 8: genre filter
+GET http://localhost:8080/api/books?genre=SCIENCE&page=0&size=2
+
+### Lab 8: invalid sort property (observed HTTP 500)
+GET http://localhost:8080/api/books?sort=nosuchfield
